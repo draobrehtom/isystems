@@ -22,6 +22,9 @@ class Producer extends Model {
 
     public  function read(Parameter $parameter = null): array
     {
+        // by id example:
+        // $this->request->get(self::ENDPOINT . '/' . $parameter->id);
+        
         return $this->request->get(self::ENDPOINT);
     }
 
