@@ -1,0 +1,17 @@
+{
+    "name": "draobrehtom/isystem",
+    "authors": [
+        {
+            "name": "Danylo Kabanov",
+            "email": "draobrehtom@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "App\\Models\\" : "src/Models",
+            "App\\Service\\" : "src/Service"
+        }
+    }
+}
