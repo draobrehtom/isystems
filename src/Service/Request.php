@@ -4,10 +4,12 @@ namespace App\Service;
 
 class Request {
 
-    public function __construct(string $url, string $login, string $password)
+    public function auth(string $url, string $login, string $password): self
     {
         $this->url = $url;
         $this->token = base64_encode("$login:$password");
+
+        return $this;
     }
 
     private function request(string $type, string $endpoint, string $json = ''): array
@@ -38,12 +40,12 @@ class Request {
         return $this->request('post', $endpoint, $json);
     }
 
-    public function put(string $endpoint, $data)
+    public function put(string $endpoint, $data): array
     {
         return $this->request('put', $endpoint, $data);
     }
 
-    public function delete(string $endpoint)
+    public function delete(string $endpoint): array
     {
         return $this->request('delete', $endpoint);
     }

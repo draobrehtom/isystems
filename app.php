@@ -2,24 +2,25 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use App\Client;
-use App\Parameter;
+use App\Service\Client;
+use App\Service\Parameter;
+use App\Service\Request;
 
 $url = 'http://grzegorz.demos.i-sklep.pl/rest_api';
 $login = 'rest';
 $password = 'vKTUeyrt';
 
 // Client
-$client = new \App\Service\Client($url, $login, $password);
+$client = new Client($url, $login, $password, new Request());
 
 // First method
-$r = $client->producers()->create(new \App\Service\Parameter([
+$r = $client->producers()->create(new Parameter([
     'name' => 'Apple',
     'site_url' => 'apple.com',
     'logo_filename' => 'apple.png'
 ]));
 
 // Second method
-$r = $client->producers()->read();
+// $r = $client->producers()->read();
 
 print_r($r);

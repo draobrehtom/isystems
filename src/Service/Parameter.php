@@ -8,38 +8,31 @@ class Parameter {
 
     public function __construct(array $params)
     {
-        foreach ($params as $key => $value) {
-            $this->{$key} = $value;
-        }
+        $this->params = $params;
     }
 
-    public function validate(array $fields)
+    public function validate(array $fields): void
     {
-        $vars = get_object_vars($this);
-
         foreach ($fields as $name => $type) {
 
-            $exception = new Exception();
-
-            if (! isset($vars[$name])) {
+            if (! isset($this->params[$name])) {
                 throw new Exception("Field $name doesn't set");
             }
 
-            $actualType = gettype($vars[$name]);
-            if ($actualType != $type) {
+            $actualType = gettype($this->params[$name]);
+
+            if ($actualType !== $type) {
                 throw new Exception("Field $name needs to be type '$type', actual - '$actualType'");
             }
         }
     }
 
-    public function __toJson(string $prefix = '')
+    public function __toJson(string $prefix = ''): string
     {
-        $vars = get_object_vars($this);
+        $vars = $this->params;
 
         if (! empty($prefix)) {
-            $vars = [
-                $prefix => $vars
-            ];
+            $vars = [$prefix => $vars];
         }
         
         return json_encode($vars);

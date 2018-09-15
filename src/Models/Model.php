@@ -1,24 +1,15 @@
 <?php
 
 namespace App\Models;
-
-use App\Service\Request;
 use App\Service\Parameter;
 
-abstract class Model {
+interface Model {
 
-    protected $request;
+    function create(Parameter $parameter): array;
 
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
+    function read(Parameter $parameter): array;
 
-    public abstract function create(Parameter $parameter);
+    function update(Parameter $parameter): array;
 
-    public abstract function read(Parameter $parameter);
-
-    public abstract function update(Parameter $parameter);
-
-    public abstract function delete(Parameter $parameter);
+    function delete(Parameter $parameter): array;
 }

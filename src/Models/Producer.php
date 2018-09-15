@@ -4,10 +4,15 @@ namespace App\Models;
 
 use App\Service\Parameter;
 
-class Producer extends Model {
+
+class Producer implements Model {
 
     public const ENDPOINT = '/shop_api/v1/producers';
     
+    public function __construct(\App\Service\Request $request)
+    {
+        $this->request = $request;
+    }
 
     public function create(Parameter $parameter): array
     {
