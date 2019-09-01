@@ -9,7 +9,8 @@ Usage:
 3. Repeat
 
 
-#Review from iSystems:
+# Review from iSystems:
+
 Danylo,
 
 poniżej recenzja Twojego kodu:
